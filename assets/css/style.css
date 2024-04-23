@@ -1,0 +1,137 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.main{
+    min-height: 100vh;
+}
+
+.books-container{
+    display: flex;
+}
+
+#photo-preview-input{
+    display: flex;
+    border: dashed 1px grey;
+    font-size: 40px;
+    color: grey;
+    height: 250px;
+    width: 200px;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.myPointer{
+    cursor: pointer;
+}
+
+#photo-preview-show{
+    display: none;
+    height: 250px;
+}
+
+#inputGroupFile01{
+    display: none;
+}
+
+.space{
+    height: 69px;
+}
+
+.btn-carousel{
+    text-decoration: none;
+    font-size: 17px;
+    color: #FF3943;
+    padding: 6px 25px;
+    border-radius: 16px;
+    transition: 0.3s;
+}
+
+.btn-carousel:hover{
+    background-color: #FF3943 !important;
+    color: #000 !important;
+}
+
+.h1-carousel{
+    margin-bottom: 25px;
+}
+
+.divisor::after{
+    content: "";
+    height: 3px;
+    width: 80px;
+    background-color: #FF3943;
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+}
+
+#thead-dark{
+    background-color: #000 !important;
+    color: #FFF !important;
+}
+
+.card-title{
+    height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.card-text{
+    height: 72px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+@media (max-width:768px) {
+    #img-width{
+        max-width:400px !important;
+    }
+}
+
+@media (max-width:425px) {
+    #img-width{
+        max-width:300px !important;
+    }
+}
+
+@media (max-width:768px) {
+    .container-desktop{
+        display: none;
+    }
+}
+
+@media (min-width:768px) {
+    .container-mobile{
+        display: none;
+    }
+}
+
+@media (max-width:768px) {
+    .footer-responsive{
+        margin: 40px 0;
+    }
+}
+
+@media (max-width:768px) {
+    .card{
+        max-width: 460px !important;
+        margin-top: 15px !important;
+    }
+}
+
+.primary-color{
+    background-color: #000;
+}
+
+.secondary-color{
+    background-color: #FF3943;
+}
