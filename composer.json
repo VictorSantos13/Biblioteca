@@ -1,0 +1,23 @@
+{
+    "name": "davis/biblioteca",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Davis\\Biblioteca\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Davi Oliveira",
+            "email": "davioliveirasilva.br@gmail.com"
+        },
+        {
+            "name": "Victor Santos",
+            "email": "davioliveirasilva.br@gmail.com"
+        }
+    ],
+    "require": {
+        "aws/aws-sdk-php": "^3.305",
+        "vlucas/phpdotenv": "^5.6"
+    }
+}

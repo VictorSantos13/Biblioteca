@@ -69,9 +69,9 @@ insert into book_genres values (default, "a0027c29-f2aa-4cfa-b5bd-35ca3c415dd0",
 
 /*** * ***/
 
-select b.title título, b.description descrição, w.name escritor, g.name gênero
+/*select b.title título, b.description descrição, w.name escritor, g.name gênero
 from book b inner join writer w inner join book_genres bg inner join genre g
-where b.writer_id = w.id and bg.book_id = b.id and g.id = bg.genre_id;
+where b.writer_id = w.id and bg.book_id = b.id and g.id = bg.genre_id;*/
 
 
 
