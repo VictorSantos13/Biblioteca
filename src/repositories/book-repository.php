@@ -2,11 +2,12 @@
 
     namespace back {
 
-        interface bookRepository {
-            public function save($name, $description);
+        interface BookRepository {
+            public function save(Book $book);
 
-            public function getAllBooks(): \mysqli_result | bool; // RETORNAR LISTA DE LIVROS (CRIAR DTO)
+            public function getBookByTitle(string $title): Book | null;
+
+            public function getAllBooks(): array | null; // RETORNAR LISTA DE LIVROS (CRIAR DTO)
         }
-
     }
 ?>

@@ -1,3 +1,30 @@
+<?php 
+  namespace back {
+    require 'C:\xampp\htdocs\Biblioteca\vendor\autoload.php';
+    require 'C:\xampp\htdocs\Biblioteca\src\services\book-service.php';
+    require 'C:\xampp\htdocs\Biblioteca\src\repositories\database\book-repo-database.php';    
+
+    // class FakeAPI {      
+
+    //   public function GET_getBookByTitle(){
+    //     $repo = new BookRepoDatabase();
+    //     $service = new BookService($repo);
+    //     return $service->getBookByTitle($_GET['title']);
+    //   }
+    // }
+
+    $repo = new BookRepoDatabase();
+    $service = new BookService($repo);
+
+    /** @var Book[] */
+    $result = $service->getAllBooks();
+
+    $i = 0;
+  
+    
+  
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,6 +104,21 @@
           </div>
 
             <!--1 ROW-->
+
+            <?php
+              if(!$result)
+              echo 'nenhum livro encontrado';
+              else {
+              foreach($result as $row) {
+              echo '<b>livro ' . $i . '<br></b>' ;
+              echo $row->getTitle() . '<br>';
+              echo $row->getDescription() . '<br>';
+              echo $row->getWriter()->getName() . '<br><br>';  
+              $i++;
+              }
+              }
+            ?>
+            
             <div class="row mt-5">              
                 <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center">
                   <div class="card mb-3" style="max-width: 540px;">
@@ -409,3 +451,5 @@
     crossorigin="anonymous"></script>
 </body>
 </html>
+
+<?php } ?>
