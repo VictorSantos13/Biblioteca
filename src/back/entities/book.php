@@ -7,6 +7,15 @@
             private $description;
             private Writer $writer;
 
+            public function fake_construct($title, $description, $writer){
+                $this->title = $title;
+                $this->$description = $description;
+                $this->writer = new Writer;
+                // $writer->set_id($writer);
+            }
+
+            public function __construct(){}
+
             public function createId() {
                 $this->id = uniqid();
             }

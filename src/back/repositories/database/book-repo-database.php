@@ -1,9 +1,9 @@
 <?php
 
     namespace back {
-        require 'C:\xampp\htdocs\Biblioteca\src\repositories\repo.php';
-        require 'C:\xampp\htdocs\Biblioteca\src\entities\book.php';
-        require 'C:\xampp\htdocs\Biblioteca\src\entities\writer.php';
+        require 'C:\xampp\htdocs\Biblioteca\src\back\repositories\repo.php';
+        require 'C:\xampp\htdocs\Biblioteca\src\back\entities\book.php';
+        require 'C:\xampp\htdocs\Biblioteca\src\back\entities\writer.php';
 
         class BookRepoDatabase extends Repo implements BookRepository {
 
@@ -19,6 +19,8 @@
                 $this->query = "select b.title, b.description, w.name from book b inner join writer w where w.id = b.writer_id
                     and b.title = '" . $title . "' ;";
                 $result = mysqli_query($this->conn, $this->query);
+
+                
                 $book = new Book();
                 $writer = new Writer();
 

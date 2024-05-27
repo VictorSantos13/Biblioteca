@@ -13,10 +13,8 @@
                 $this->repo = $repo;
             }
 
-            public function createNewBook(){
-                $book = new Book();
-                $book->setTitle('teste');
-                $this->repo->save($book);                
+            public function createNewBook(Book $book, $writerId){
+                $this->repo->save($book, $writerId);                
             }
 
             public function getBookByTitle($title){
@@ -29,6 +27,10 @@
                 /** @var Book[] **/
                 $result = $this->repo->getAllBooks();
                 return $result;
+            }
+
+            public function test(){
+                return 10;
             }
         }
     }

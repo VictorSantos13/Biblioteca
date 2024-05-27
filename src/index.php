@@ -1,28 +1,5 @@
 <?php 
-  namespace back {
-    require 'C:\xampp\htdocs\Biblioteca\vendor\autoload.php';
-    require 'C:\xampp\htdocs\Biblioteca\src\services\book-service.php';
-    require 'C:\xampp\htdocs\Biblioteca\src\repositories\database\book-repo-database.php';    
-
-    // class FakeAPI {      
-
-    //   public function GET_getBookByTitle(){
-    //     $repo = new BookRepoDatabase();
-    //     $service = new BookService($repo);
-    //     return $service->getBookByTitle($_GET['title']);
-    //   }
-    // }
-
-    $repo = new BookRepoDatabase();
-    $service = new BookService($repo);
-
-    /** @var Book[] */
-    $result = $service->getAllBooks();
-
-    $i = 0;
-  
-    
-  
+  require "./back/routes/get-all-books.php"      
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" co  ntent="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Biblioteca</title>
 </head>
@@ -103,23 +80,15 @@
             </div>
           </div>
 
-            <!--1 ROW-->
-
+            <!--1 ROW-->            
+            <div class="row mt-5">        
+            
             <?php
-              if(!$result)
+              $i = 1;
+              if(!$resultAllBooks)
               echo 'nenhum livro encontrado';
               else {
-              foreach($result as $row) {
-              echo '<b>livro ' . $i . '<br></b>' ;
-              echo $row->getTitle() . '<br>';
-              echo $row->getDescription() . '<br>';
-              echo $row->getWriter()->getName() . '<br><br>';  
-              $i++;
-              }
-              }
-            ?>
-            
-            <div class="row mt-5">              
+              foreach($resultAllBooks as $row) { ?>
                 <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center">
                   <div class="card mb-3" style="max-width: 540px;">
                     <div class="row g-0">
@@ -128,122 +97,33 @@
                       </div>
                       <div class="col-md-8">
                         <div class="card-body">
-                          <h5 class="card-title">1984</h5>
-                          <p class="card-text">1984 é um romance distópico do escritor inglês George Orwell.</p>
+                          <h5 class="card-title"><?php echo $row->getTitle() ?></h5>
+                          <p class="card-text"><?php echo $row->getDescription() ?></p>
                           <button type="button" class="btn btn-primary">Editar</button>
                           <button type="button" class="btn btn-primary">Ver mais</button>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> <?php
 
-                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center">
-                  <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                      <div class="col-md-4 d-flex justify-content-center">
-                        <img src="./assets/images/img-livro-02.jpg" class="img-fluid rounded-start" alt="...">
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title">Diário de Anne Frank</h5>
-                          <p class="card-text">O Diário de Anne Frank é um livro escrito por Anne Frank entre 12 de junho de 1942 e 1.º de agosto de 1944 durante a Segunda Guerra Mundial.</p>
-                          <button type="button" class="btn btn-primary">Editar</button>
-                          <button type="button" class="btn btn-primary">Ver mais</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              $i++;
+              }
+              }
+            ?>
+            
+                
 
-                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center">
-                  <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                      <div class="col-md-4 d-flex justify-content-center">
-                        <img src="./assets/images/img-livro-03.webp" class="img-fluid rounded-start" alt="...">
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title">É Assim que Acaba</h5>
-                          <p class="card-text">É assim que acaba é o romance mais pessoal da carreira de Colleen Hoover, discutindo temas como violência doméstica e abuso psicológico de forma sensível e direta. </p>
-                          <button type="button" class="btn btn-primary">Editar</button>
-                          <button type="button" class="btn btn-primary">Ver mais</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
-
-            <!--2 ROW-->
-            <div class="row mt-4">              
-              <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center">
-                <div class="card mb-3" style="max-width: 540px;">
-                  <div class="row g-0">
-                    <div class="col-md-4 d-flex justify-content-center">
-                      <img src="./assets/images/img-livro-04.webp" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                        <h5 class="card-title">Em mim basta!</h5>
-                        <p class="card-text">Em mim basta! será seu novo livro de cabeceira e de todo aquele que quer dar um novo rumo à sua vida! </p>
-                        <button type="button" class="btn btn-primary">Editar</button>
-                        <button type="button" class="btn btn-primary">Ver mais</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center">
-                <div class="card mb-3" style="max-width: 540px;">
-                  <div class="row g-0">
-                    <div class="col-md-4 d-flex justify-content-center">
-                      <img src="./assets/images/img-livro-05.webp" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                        <h5 class="card-title">The Bookstore Sisters</h5>
-                        <p class="card-text">Da autora best-seller do New York Times, Alice Hoffman, chega um conto comovente sobre família, independência e como encontrar seu lugar no mundo.</p>
-                        <button type="button" class="btn btn-primary">Editar</button>
-                        <button type="button" class="btn btn-primary">Ver mais</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center">
-                <div class="card mb-3" style="max-width: 540px;">
-                  <div class="row g-0">
-                    <div class="col-md-4 d-flex justify-content-center">
-                      <img src="./assets/images/img-livro-06.webp" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                        <h5 class="card-title">Amazona: Romance</h5>
-                        <p class="card-text">Nono livro de Sérgio Sant’Anna e romance sem-par na literatura brasileira, Amazona ganha nova edição com posfácio de André Nigri.</p>
-                        <button type="button" class="btn btn-primary">Editar</button>
-                        <button type="button" class="btn btn-primary">Ver mais</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          <!--3 ROW-->
-          <div class="row mt-4">              
             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center">
               <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
                   <div class="col-md-4 d-flex justify-content-center">
-                    <img src="./assets/images/img-livro-07.webp" class="img-fluid rounded-start" alt="...">
+                    <img src="./assets/images/img-livro-02.jpg" class="img-fluid rounded-start" alt="...">
                   </div>
                   <div class="col-md-8">
                     <div class="card-body">
-                      <h5 class="card-title">Os segredos da mente milionária</h5>
-                      <p class="card-text">Aprenda a enriquecer mudando seus conceitos sobre o dinheiro e adotando os hábitos das pessoas bem-sucedidas</p>
+                      <h5 class="card-title">Diário de Anne Frank</h5>
+                      <p class="card-text">O Diário de Anne Frank é um livro escrito por Anne Frank entre 12 de junho de 1942 e 1.º de agosto de 1944 durante a Segunda Guerra Mundial.</p>
                       <button type="button" class="btn btn-primary">Editar</button>
                       <button type="button" class="btn btn-primary">Ver mais</button>
                     </div>
@@ -256,12 +136,12 @@
               <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
                   <div class="col-md-4 d-flex justify-content-center">
-                    <img src="./assets/images/img-livro-08.webp" class="img-fluid rounded-start" alt="...">
+                    <img src="./assets/images/img-livro-03.webp" class="img-fluid rounded-start" alt="...">
                   </div>
                   <div class="col-md-8">
                     <div class="card-body">
-                      <h5 class="card-title">#umdiasemreclamar</h5>
-                      <p class="card-text">DESCUBRA O PODER DA GRATIDÃO E MUDE A SUA VIDA EM 24 HORAS</p>
+                      <h5 class="card-title">É Assim que Acaba</h5>
+                      <p class="card-text">É assim que acaba é o romance mais pessoal da carreira de Colleen Hoover, discutindo temas como violência doméstica e abuso psicológico de forma sensível e direta. </p>
                       <button type="button" class="btn btn-primary">Editar</button>
                       <button type="button" class="btn btn-primary">Ver mais</button>
                     </div>
@@ -270,139 +150,10 @@
               </div>
             </div>
 
-            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center">
-              <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                  <div class="col-md-4 d-flex justify-content-center">
-                    <img src="./assets/images/img-livro-09.webp" class="img-fluid rounded-start" alt="...">
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title">Quebrando o hábito de ser você mesmo</h5>
-                      <p class="card-text">Você não está condenado por seus genes e programado para ser de uma determinada maneira no restante de sua vida.</p>
-                      <button type="button" class="btn btn-primary">Editar</button>
-                      <button type="button" class="btn btn-primary">Ver mais</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
         </div>
 
-        <!--4 ROW-->
-        <div class="row mt-4 mb-4">              
-          <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center">
-            <div class="card mb-3" style="max-width: 540px;">
-              <div class="row g-0">
-                <div class="col-md-4 d-flex justify-content-center">
-                  <img src="./assets/images/img-livro-10.webp" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Atitude mental positiva</h5>
-                    <p class="card-text">“Tudo o que a mente humana pode conceber e acreditar, ela pode conquistar.”</p>
-                    <button type="button" class="btn btn-primary">Editar</button>
-                    <button type="button" class="btn btn-primary">Ver mais</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center">
-            <div class="card mb-3" style="max-width: 540px;">
-              <div class="row g-0">
-                <div class="col-md-4 d-flex justify-content-center">
-                  <img src="./assets/images/img-livro-11.webp" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Where the Crawdads Sing </h5>
-                    <p class="card-text">Durante anos, rumores sobre a “garota do pântano” assombraram Barkley Cove, uma cidade tranquila na costa da Carolina do Norte.</p>
-                    <button type="button" class="btn btn-primary">Editar</button>
-                    <button type="button" class="btn btn-primary">Ver mais</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center">
-            <div class="card mb-3" style="max-width: 540px;">
-              <div class="row g-0">
-                <div class="col-md-4 d-flex justify-content-center">
-                  <img src="./assets/images/img-livro-12.webp" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Rejeitada pelo Mafioso</h5>
-                    <p class="card-text">Giovanni Caccini é o chefe da máfia em Chicago, um dos braços da Cosa Nostra. Um homem cheio de segredos, com um passado sombrio e que cresceu no meio da violência imposta por seu pai, de quem herdou o cargo.</p>
-                    <button type="button" class="btn btn-primary">Editar</button>
-                    <button type="button" class="btn btn-primary">Ver mais</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!--5 ROW-->
-        <div class="row mt-4 mb-4">              
-          <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center">
-            <div class="card mb-3" style="max-width: 540px;">
-              <div class="row g-0">
-                <div class="col-md-4 d-flex justify-content-center">
-                  <img src="./assets/images/img-livro-13.webp" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">O diário do imperador estóico Marco Aurélio</h5>
-                    <p class="card-text">1984 é um romance distópico do escritor inglês George Orwell.</p>
-                    <button type="button" class="btn btn-primary">Editar</button>
-                    <button type="button" class="btn btn-primary">Ver mais</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center">
-            <div class="card mb-3" style="max-width: 540px;">
-              <div class="row g-0">
-                <div class="col-md-4 d-flex justify-content-center">
-                  <img src="./assets/images/img-livro-14.webp" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Pense como um imperador</h5>
-                    <p class="card-text">Conheça a mente de um dos maiores líderes da história e descubra como um mindset resiliente pode vencer qualquer adversidade</p>
-                    <button type="button" class="btn btn-primary">Editar</button>
-                    <button type="button" class="btn btn-primary">Ver mais</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center">
-            <div class="card mb-3" style="max-width: 540px;">
-              <div class="row g-0">
-                <div class="col-md-4 d-flex justify-content-center">
-                  <img src="./assets/images/img-livro-15.webp" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Hábitos dos milionários</h5>
-                    <p class="card-text">Os segredos por trás das maiores fortunas do mundo</p>
-                    <button type="button" class="btn btn-primary">Editar</button>
-                    <button type="button" class="btn btn-primary">Ver mais</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+            
 
         <!--LOCALIZAÇÂO-->
         <div class="container-fluid">
@@ -451,5 +202,3 @@
     crossorigin="anonymous"></script>
 </body>
 </html>
-
-<?php } ?>

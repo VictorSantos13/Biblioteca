@@ -1,3 +1,8 @@
+<?php
+    require './back/routes/get-all-writers.php';
+    require './back/routes/get-all-genders.php'
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,36 +50,52 @@
 
         <div class="container">
             <div class="row justify-content-center">
-                <form class="w-50 p-4 bg-light mt-3" id="form" onsubmit='event.preventDefault(); saveImage()'>
+                <form class="w-50 p-4 bg-light mt-3" id="form" action="connections/create-book.php" method="post">
                     <h1>Cadastre um novo livro</h1>
 
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Título</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="1984" aria-describedby="emailHelp">
+                        <input type="text" class="form-control" name="fTitle" id="fTitle" placeholder="1984" aria-describedby="emailHelp">
                     </div>   
 
                     <div class="form-floating mb-3">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"  style="height: 200px; resize: none;"></textarea>
+                        <textarea class="form-control" placeholder="Leave a comment here" name="fDescription" id="floatingTextarea2"  style="height: 200px; resize: none;"></textarea>
                         <label for="floatingTextarea2">Escreva uma descrição do livro</label>
                     </div>
 
                     <div class="mb-3">
                         <label for="disabledSelect" class="form-label">Gênero <a href="./create-gender.html">Criar um novo gênero</a></label>
                         <select id="disabledSelect" class="form-select">
-                            <option>Selecione um gênero</option>
-                            <option>Drama</option>
-                            <option>Ficção</option>
-                            <option>Romance</option>
-                            <option>Política</option>
+
+                            <?php if($resultAllGenders != null){ ?>
+
+                                <option>Selecione um gênero</option>                                
+                                <?php foreach($resultAllGenders as $row){ ?>
+                                    <option><?php echo $row->getName()?></option>
+                                <?php } ?>
+
+                            <?php } else { ?>
+                                <option>Ainda não há gênero</option> 
+                            <?php }?>
+
                         </select>
                     </div>
 
                     <div class="mb-3">
                         <label for="disabledSelect" class="form-label">Escritor <a href="./create-writer.html">Criar um novo escritor</a></label>
-                        <select id="disabledSelect" class="form-select">
-                            <option>Selecione um escritor</option>
-                            <option>George Orwell</option>
-                            <option>Julio Verne</option>
+                        <select id="disabledSelect" name="fWriter" class="form-select">
+                            
+                            <?php if($resultAllWriters != null){ ?>
+
+                                <option>Selecione um escritor</option>                                
+                                <?php foreach($resultAllWriters as $row){ ?>
+                                    <option><?php echo $row->getName()?></option>
+                                <?php } ?>
+
+                            <?php } else { ?>
+                                <option>Ainda não há escritores</option> 
+                            <?php }?>
+
                         </select>
                     </div>
 
@@ -88,9 +109,7 @@
 
                     <button type="submit" id="submit" class="btn btn-primary">Salvar</button>
                 </form>                
-            </div>
-
-            
+            </div>            
         </div>
 
         <!--FOOTER-->
@@ -113,7 +132,7 @@
                       <h2 class="text-white">Redes</h2>
                         <a href="https://www.instagram.com/" target="_blank"><img src="./assets/svg/instagram.svg" width="50px"/></a>
                         <a href="https://www.facebook.com/" target="_blank"><img src="./assets/svg/facebook.svg" width="50" style="margin: 0 5px;"/></a>
-                        <a href="https://twitter.com/" target="_blank"><img src="./assets/svg/twitter.svg" width="50"/></a>                      
+                        <a hsref="https://twitter.com/" target="_blank"><img src="./assets/svg/twitter.svg" width="50"/></a>                      
                     </div>
                   </div>                  
                 </div>       

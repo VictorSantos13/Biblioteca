@@ -8,15 +8,15 @@
     $service = new BookService($repo);
 
     /** @var Book **/
-    $result = $service->getBookByTitle($_GET['title']);
+    $resultBook = $service->getBookByTitle($_GET['title']);
   
-    if(!$result)
+    if(!$resultBook)
         echo 'nenhum livro encontrado';
     else
     {
-        echo $result->getTitle() . '<br>';
-        echo $result->getDescription() . '<br>';        
-        echo $result->getWriter()->getName() . '<br>';  
+        echo $resultBook->getTitle() . '<br>';
+        echo $resultBook->getDescription() . '<br>';        
+        echo $resultBook->getWriter()->getName() . '<br>';  
     }
   }
   
