@@ -7,8 +7,8 @@
 
             public function getAllWriters();
 
-            public function getWriterById($id);
+            public function getWriterById($id): Writer | null;
 
-            public function getWriterByName();
+            public function getWriterByName($name): Writer | null;
         }
     }

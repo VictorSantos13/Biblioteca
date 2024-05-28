@@ -4,7 +4,7 @@
 
         interface BookRepository {
             
-            public function save(Book $book);
+            public function save(Book $book, $writerId);
 
             public function getBookByTitle(string $title): Book | null;
 

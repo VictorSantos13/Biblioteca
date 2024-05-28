@@ -50,7 +50,7 @@
 
         <div class="container">
             <div class="row justify-content-center">
-                <form class="w-50 p-4 bg-light mt-3" id="form" action="connections/create-book.php" method="post">
+                <form class="w-50 p-4 bg-light mt-3" id="form" action="./back/routes/create-book.php" method="post">
                     <h1>Cadastre um novo livro</h1>
 
                     <div class="mb-3">

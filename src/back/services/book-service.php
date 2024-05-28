@@ -14,7 +14,7 @@
             }
 
             public function createNewBook(Book $book, $writerId){
-                $this->repo->save($book, $writerId);                
+                return $this->repo->save($book, $writerId);                
             }
 
             public function getBookByTitle($title){

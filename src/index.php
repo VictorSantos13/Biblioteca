@@ -84,7 +84,6 @@
             <div class="row mt-5">        
             
             <?php
-              $i = 1;
               if(!$resultAllBooks)
               echo 'nenhum livro encontrado';
               else {
@@ -107,7 +106,6 @@
                   </div>
                 </div> <?php
 
-              $i++;
               }
               }
             ?>

@@ -7,19 +7,19 @@
 
         class BookRepoDatabase extends Repo implements BookRepository {
 
-            public function save(Book $book) {
-                
+            public function save(Book $book, $writerId) {
+                $this->query = "insert into book values ('" . $book->getId() . "', '" . $book->getTitle() . "', 
+                '" . $book->getDescription() . "', '" . $writerId . "')";
+                mysqli_query($this->conn, $this->query);
             }
 
             /**
              * @return Book
              */
             public function getBookByTitle(string $title): Book | null{
-                // $this->query = "select title, description from book where title = '" . $title . "' ;";
                 $this->query = "select b.title, b.description, w.name from book b inner join writer w where w.id = b.writer_id
-                    and b.title = '" . $title . "' ;";
+                and b.title = '" . $title . "' ;";
                 $result = mysqli_query($this->conn, $this->query);
-
                 
                 $book = new Book();
                 $writer = new Writer();

@@ -38,17 +38,51 @@
                 return $result;
             }
 
-            public function getWriterById($id)
-            {
+            public function getWriterById($id): Writer | null{
                 $this->query = "select name, description from writer where id = '" . $id . "' ;";
                 $result = mysqli_query($this->conn, $this->query);
-                return $result;
+
+                // $book = new Book();
+                $writer = new Writer();
+
+                $writer->setName('false');
+
+                while($row = mysqli_fetch_row($result)){                                        
+                    // $writer->setId($row[0]);
+                    $writer->setName($row[0]);
+                    $writer->setDescription($row[1]);
+                    // $writer->setWriter($writer);
+                };
+                
+                if($writer->getName() == 'false')
+                    return null;
+                else
+                    return $writer;
+
             }
 
-            public function getWriterByName(){
-                $this->query = 'select title, description from book;';
+            /**
+             * @return Writer
+             */
+            public function getWriterByName($name): Writer | null {
+                $this->query = "select id, name, description from writer where name = '" . $name . "' ;";
                 $result = mysqli_query($this->conn, $this->query);
-                return $result;
+                
+                // $book = new Book();
+                $writer = new Writer();
+
+                $writer->setName('false');
+
+                while($row = mysqli_fetch_row($result)){                                        
+                    $writer->setId($row[0]);
+                    $writer->setName($row[1]);
+                    $writer->setDescription($row[2]);
+                };
+                
+                if($writer->getName() == 'false')
+                    return null;
+                else
+                    return $writer;
             }
         }
     }

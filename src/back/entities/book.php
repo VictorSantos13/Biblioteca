@@ -7,11 +7,10 @@
             private $description;
             private Writer $writer;
 
-            public function fake_construct($title, $description, $writer){
+            public function fake_construct($title, $description){
                 $this->title = $title;
                 $this->$description = $description;
-                $this->writer = new Writer;
-                // $writer->set_id($writer);
+                // $this->writer = new Writer;
             }
 
             public function __construct(){}
