@@ -1,3 +1,4 @@
 <?php
-    echo 'criando escritor'
+    echo $_POST['fName'];
+    echo $_POST['fDescriprion'];
 ?>
