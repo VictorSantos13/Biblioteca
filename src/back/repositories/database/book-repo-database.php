@@ -1,15 +1,25 @@
 <?php
 
     namespace back {
+
+    use mysqli;
+
         require 'C:\xampp\htdocs\Biblioteca\src\back\repositories\repo.php';
         require 'C:\xampp\htdocs\Biblioteca\src\back\entities\book.php';
         require 'C:\xampp\htdocs\Biblioteca\src\back\entities\writer.php';
 
         class BookRepoDatabase extends Repo implements BookRepository {
 
-            public function save(Book $book, $writerId) {
+            public function save(Book $book, $writerId, $genderId) {
                 $this->query = "insert into book values ('" . $book->getId() . "', '" . $book->getTitle() . "', 
-                '" . $book->getDescription() . "', '" . $writerId . "')";
+                '" . $book->getDescription() . "', '" . $writerId . "');";
+                mysqli_query($this->conn, $this->query);
+
+                $this->bookGenders($book->getId(), $genderId);
+            }
+
+            private function bookGenders($bookId, $genderId){
+                $this->query = "insert into book_genres values (default, '" . $genderId . "', '" . $bookId . "');";
                 mysqli_query($this->conn, $this->query);
             }
 
@@ -51,7 +61,6 @@
                 $book->setTitle('false');
 
                 while($row = mysqli_fetch_row($result)){
-                    // $book = new Book();
                     $writer = new Writer();
 
                     $book->setTitle($row[0]);

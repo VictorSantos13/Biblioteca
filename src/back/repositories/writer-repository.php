@@ -3,7 +3,7 @@
     namespace back {
         
         interface WriterRepository {
-            public function save();
+            public function save(Writer $writer);
 
             public function getAllWriters();
 

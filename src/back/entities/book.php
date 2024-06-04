@@ -9,8 +9,7 @@
 
             public function fake_construct($title, $description){
                 $this->title = $title;
-                $this->$description = $description;
-                // $this->writer = new Writer;
+                $this->description = $description;
             }
 
             public function __construct(){}

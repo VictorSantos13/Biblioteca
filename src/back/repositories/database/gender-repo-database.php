@@ -10,35 +10,32 @@
         class GenderRepoDatabase extends Repo implements GenderRepository {
 
             public function save(Gender $gender) {
-                
+                $this->query = "insert into gender values ('" . $gender->getId() . "', '" . $gender->getName() . "', 
+                '" . $gender->getDescription() . "');";
+                mysqli_query($this->conn, $this->query);
             }
 
             /**
              * @return Gender
              */
-            public function getGenderByName(string $title): Gender | null{
-                // $this->query = "select title, description from book where title = '" . $title . "' ;";
-                // $this->query = "select b.title, b.description, w.name from book b inner join writer w where w.id = b.writer_id
-                //     and b.title = '" . $title . "' ;";
-                // $result = mysqli_query($this->conn, $this->query);
-
+            public function getGenderByName(string $name): Gender | null{
+                $this->query = "select * from genre where name = '" . $name . "' ;";
+                $result = mysqli_query($this->conn, $this->query);
                 
-                // $book = new Book();
-                // $writer = new Writer();
+                $gender = new Gender();
 
-                // $book->setTitle('false');
+                $gender->setName('false');
 
-                // while($row = mysqli_fetch_row($result)){                                        
-                //     $book->setTitle($row[0]);
-                //     $book->setDescription($row[1]);
-                //     $writer->setName($row[2]);
-                //     $book->setWriter($writer);
-                // };
+                while($row = mysqli_fetch_row($result)){                                        
+                    $gender->setId($row[0]);
+                    $gender->setName($row[1]);
+                    $gender->setDescription($row[2]);
+                };
                 
-                // if($book->getTitle() == 'false')
-                //     return null;
-                // else
-                //     return $book;
+                if($gender->getName() == 'false')
+                    return null;
+                else
+                    return $gender;
 
                 return null;
             }   

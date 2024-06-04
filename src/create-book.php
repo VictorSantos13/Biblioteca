@@ -64,8 +64,8 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="disabledSelect" class="form-label">Gênero <a href="./create-gender.html">Criar um novo gênero</a></label>
-                        <select id="disabledSelect" class="form-select">
+                        <label for="disabledSelect" class="form-label">Gênero <a href="./create-gender.php">Criar um novo gênero</a></label>
+                        <select id="disabledSelect" name="fGender" class="form-select">
 
                             <?php if($resultAllGenders != null){ ?>
 
@@ -82,7 +82,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="disabledSelect" class="form-label">Escritor <a href="./create-writer.html">Criar um novo escritor</a></label>
+                        <label for="disabledSelect" class="form-label">Escritor <a href="./create-writer.php">Criar um novo escritor</a></label>
                         <select id="disabledSelect" name="fWriter" class="form-select">
                             
                             <?php if($resultAllWriters != null){ ?>

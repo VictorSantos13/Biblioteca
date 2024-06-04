@@ -45,12 +45,12 @@
 
         <div class="container">
             <div class="row justify-content-center">
-                <form class="w-50 p-4 bg-light mt-3">   
+                <form class="w-50 p-4 bg-light mt-3" id="form" action="./back/routes/create-gender.php" method="post">   
                     <h1>Cadastre um gênero</h1>
 
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Nome do gênero</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="1984" aria-describedby="emailHelp">
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="1984" aria-describedby="emailHelp">
                     </div>   
 
                     <div class="form-floating mb-3">

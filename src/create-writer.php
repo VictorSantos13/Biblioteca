@@ -45,16 +45,16 @@
 
         <div class="container">
             <div class="row justify-content-center">
-                <form class="w-50 p-4 bg-light mt-3">   
+                <form class="w-50 p-4 bg-light mt-3" id="form" action="./back/routes/create-writer.php" method="post">   
                     <h1>Cadastre um escritor</h1>
 
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Nome do escritor</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="1984" aria-describedby="emailHelp">
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="fName" placeholder="1984" aria-describedby="emailHelp">
                     </div>   
 
                     <div class="form-floating mb-3">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"  style="height: 200px; resize: none;"></textarea>
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="fDescription" style="height: 200px; resize: none;"></textarea>
                         <label for="floatingTextarea2">Escreva uma descrição</label>
                     </div>                    
 

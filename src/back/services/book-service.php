@@ -13,8 +13,8 @@
                 $this->repo = $repo;
             }
 
-            public function createNewBook(Book $book, $writerId){
-                return $this->repo->save($book, $writerId);                
+            public function createNewBook(Book $book, $writerId, $genderId){
+                return $this->repo->save($book, $writerId, $genderId);                
             }
 
             public function getBookByTitle($title){

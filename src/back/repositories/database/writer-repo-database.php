@@ -8,8 +8,10 @@
 
         class WriterRepoDatabase extends Repo implements WriterRepository{
 
-            public function save(){
-
+            public function save(Writer $writer) {
+                $this->query = "insert into writer values ('" . $writer->getId() . "', '" . $writer->getName() . "', 
+                '" . $writer->getDescription() . "');";
+                mysqli_query($this->conn, $this->query);
             }
 
             public function getAllWriters(){
