@@ -13,7 +13,7 @@
         <!--HEADER-->
         <nav class="navbar navbar-expand-lg fixed-top primary-color">
             <div class="container-fluid">
-                <img src="assets/images/Logo.png" class="navbar-brand" href="./index.html"><!--<a class="navbar-brand" href="./index.html">Biblioteca FMU</a>-->
+                <img src="assets/images/Logo.png" class="navbar-brand" href="./index.html">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
