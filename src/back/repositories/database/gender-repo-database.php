@@ -10,7 +10,7 @@
         class GenderRepoDatabase extends Repo implements GenderRepository {
 
             public function save(Gender $gender) {
-                $this->query = "insert into gender values ('" . $gender->getId() . "', '" . $gender->getName() . "', 
+                $this->query = "insert into genre values ('" . $gender->getId() . "', '" . $gender->getName() . "', 
                 '" . $gender->getDescription() . "');";
                 mysqli_query($this->conn, $this->query);
             }

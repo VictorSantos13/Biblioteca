@@ -1,6 +1,6 @@
 <?php
 
-use back\WriterRepository;
+namespace back {
 
     class WriterService {
 
@@ -10,8 +10,8 @@ use back\WriterRepository;
             $this->writerRepo = $repo;
         }
 
-        public function save($name, $description){
-            $this->writerRepo->save($name, $description);
+        public function createNewWriter(Writer $writer){
+            $this->writerRepo->save($writer);
             
         }
 
@@ -27,3 +27,4 @@ use back\WriterRepository;
             return $this->writerRepo->getWriterByName($name);
         }
     }
+}

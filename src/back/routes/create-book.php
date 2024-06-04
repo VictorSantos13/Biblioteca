@@ -5,7 +5,7 @@ use back\BookRepoDatabase;
 use back\BookService;
 use back\GenderRepoDatabase;
 use back\GenderService;
-use back\Writer;
+use back\WriterService;
 use back\WriterRepoDatabase;
 
     require 'C:\xampp\htdocs\biblioteca\src\back\repositories\database\book-repo-database.php';
@@ -30,6 +30,6 @@ use back\WriterRepoDatabase;
     $book->createId();
     $book->fake_construct($_POST['fTitle'], $_POST['fDescription']);
 
-    echo $bookService->createNewBook($book, $writer->getId(), $gender->getId());
+    $bookService->createNewBook($book, $writer->getId(), $gender->getId());
 
     header('location: ../../index.php');
