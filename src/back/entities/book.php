@@ -5,11 +5,13 @@
             private $id;
             private $title;
             private $description;
+            private $coverUrl;
             private Writer $writer;
 
-            public function fake_construct($title, $description){
+            public function fake_construct($title, $description, $coverUrl){
                 $this->title = $title;
                 $this->description = $description;
+                $this->coverUrl = $coverUrl;
             }
 
             public function __construct(){}
@@ -36,6 +38,14 @@
             
             public function setDescription($description){
                 $this->description = $description;
+            }  
+
+            public function getCoverUrl(){
+                return $this->coverUrl;
+            }     
+            
+            public function setCoverUrl($url){
+                $this->coverUrl = $url;
             }  
 
             public function getWriter(){

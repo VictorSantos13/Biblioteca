@@ -1,3 +1,9 @@
+<?php
+    require './back/routes/get-all-writers.php';
+    require './back/routes/get-all-genders.php';
+    require 'C:\xampp\htdocs\Biblioteca\src\back\routes\get-book-by-title.php'
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,51 +48,70 @@
         <div class="space"></div>
         <!--END HEADER-->
 
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-12">
-                    <h1 class="text-center mt-3 mb-5">Sobre nós</h1>
-                </div>
-            </div>
-            
+        <div class="container">
+            <div class="row justify-content-center">
+                <form class="w-50 p-4 bg-light mt-3" id="form" action="./back/routes/create-book.php" method="post" enctype="multipart/form-data">
+                    <h1>Cadastre um novo livro</h1>
+                    <?php echo $resultBook->getDescription() ?>
 
-            <div class="row">
-                <div class="col-6">
-                    <p class="text-justify">
-                        Uma história de sucesso que se inicia com o sonho de Eva Herz: construir uma livraria para promover o encontro de pessoas com os mais variados interesses. E foi em busca desse sonho que há 70 anos Dona Eva fundou a Livraria Cultura.
-                        A empresa teve um início tímido na casa da família Herz e atualmente é referência nacional com duas lojas distribuídas pelo Brasil - uma em Porto Alegre (shopping Bourbon Country) e uma no coração de São Paulo (Conjunto Nacional da avenida Paulista, um ponto turístico).
-                        Dedicamos a oferecer um espaço multimídia, onde a busca pelo produto é apenas o início de uma jornada enriquecedora: nossas lojas dão vida à cultura por meio de seu extenso acervo e também do nosso teatro, auditórios, cafés e eventos gratuitos. As nossas prateleiras esperam por você.
-                    </p>
-                </div> 
 
-                <div class="col-6">
-                    <img src="https://revista-cdn.querobolsa.com.br/post_images/5100/ef349eba5c731df0412a6275706fafd5bc186c49.png?1510068495" style="height: 280px;"
-                        class="rounded">
-                </div> 
-            </div>           
-                          
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Título</label>
+                        <input type="text" class="form-control" value='<?php echo $resultBook->getDescription() ?>' name="fTitle" id="fTitle" placeholder="1984" aria-describedby="emailHelp">
+                    </div>   
+
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" value="hm" name="fDescription" id="floatingTextarea2"  style="height: 200px; resize: none;"></textarea>
+                        <label for="floatingTextarea2">Escreva uma descrição do livro</label>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="disabledSelect" class="form-label">Gênero <a href="./create-gender.php">Criar um novo gênero</a></label>
+                        <select id="disabledSelect" name="fGender" class="form-select">
+
+                            <?php if($resultAllGenders != null){ ?>
+
+                                <option>Selecione um gênero</option>                                
+                                <?php foreach($resultAllGenders as $row){ ?>
+                                    <option><?php echo $row->getName()?></option>
+                                <?php } ?>
+
+                            <?php } else { ?>
+                                <option>Ainda não há gênero</option> 
+                            <?php }?>
+
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="disabledSelect" class="form-label">Escritor <a href="./create-writer.php">Criar um novo escritor</a></label>
+                        <select id="disabledSelect" name="fWriter" class="form-select">
+                            
+                            <?php if($resultAllWriters != null){ ?>
+
+                                <option>Selecione um escritor</option>                                
+                                <?php foreach($resultAllWriters as $row){ ?>
+                                    <option><?php echo $row->getName()?></option>
+                                <?php } ?>
+
+                            <?php } else { ?>
+                                <option>Ainda não há escritores</option> 
+                            <?php }?>
+
+                        </select>
+                    </div>
+
+                    <div class="mb-3 myPointer">
+                        <input type="file" accept="image" name="cover" id="inputGroupFile01">                    
+                        <label style="display: block;" for="inputGroupFile01">
+                            <img style="display: block;" src="https://biblioteca-fmu.s3.amazonaws.com/<?php echo $resultBook->getCoverUrl() ?>" id="photo-preview-show">
+                        </label>
+                    </div>                    
+
+                    <button type="submit" id="submit" class="btn btn-primary">Salvar</button>
+                </form>                
+            </div>            
         </div>
-
-        <!-- 
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-6">
-                    <p class="text-justify">
-                        O que dá direção e significado ao nosso trabalho?
-                        Disponibilizar um acervo de títulos completo, com equipe de colaboradores competente e treinada, orientada a fazer do momento da compra uma experiência única de descoberta e prazer.
-                    </p>
-                </div> 
-
-                <div class="col-6">
-                    <p class="text-justify">
-                        Acreditamos no poder transformador da informação e da cultura.
-                        Nosso objetivo é ser a melhor loja de entretenimento e informação, nos consolidando como a grande referência do setor.
-                        Quanto mais crescermos, mais vamos disseminar essa informação, ajudando as pessoas a construir e viver em um mundo melhor e mais justo.
-                    </p>
-                </div> 
-            </div>                         
-        </div>
-        -->
     </main>
 
     <!--FOOTER-->
@@ -120,5 +145,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
     crossorigin="anonymous"></script>
+    <script src="./assets/js/image-preview.js"></script>
+    <script src="./assets/js/validation.js"></script>
 </body>
 </html> 

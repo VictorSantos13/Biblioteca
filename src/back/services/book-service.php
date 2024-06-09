@@ -7,7 +7,6 @@
         class BookService {
 
             private BookRepository $repo;
-            private WriterService $writerService;
 
             public function __construct(BookRepository $repo){
                 $this->repo = $repo;

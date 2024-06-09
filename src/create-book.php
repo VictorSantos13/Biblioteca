@@ -1,6 +1,7 @@
 <?php
     require './back/routes/get-all-writers.php';
-    require './back/routes/get-all-genders.php'
+    require './back/routes/get-all-genders.php';
+    $coverId = uniqid();
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +51,7 @@
 
         <div class="container">
             <div class="row justify-content-center">
-                <form class="w-50 p-4 bg-light mt-3" id="form" action="./back/routes/create-book.php" method="post">
+                <form class="w-50 p-4 bg-light mt-3" id="form" action="./back/routes/create-book.php" method="post" enctype="multipart/form-data">
                     <h1>Cadastre um novo livro</h1>
 
                     <div class="mb-3">
@@ -100,7 +101,7 @@
                     </div>
 
                     <div class="mb-3 myPointer">
-                        <input type="file" accept="image" id="inputGroupFile01">                    
+                        <input type="file" accept="image" name="cover" id="inputGroupFile01">                    
                         <label for="inputGroupFile01" id="photo-preview-input">+</label>
                         <label for="inputGroupFile01">
                             <img src="#" id="photo-preview-show">

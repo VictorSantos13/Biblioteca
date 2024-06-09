@@ -1,4 +1,5 @@
 <?php 
+  session_start();
   require "./back/routes/get-all-books.php"      
 ?>
 
@@ -37,7 +38,13 @@
                 </li>
               </ul>                
               
-              <a class="nav-link active text-white" aria-current="page" href="./login.html">Entrar</a>
+              <?php if(!isset($_SESSION["newsession"])) { ?>
+                <a class="nav-link active text-white" aria-current="page" href="./login.php">Entrar</a>
+              <?php } else { ?>
+                <a class="nav-link active text-white" aria-current="page"><?php echo $_SESSION["newsession"] ?></a>
+                <a class="nav-link active text-white" aria-current="page" href="./back/routes/logout.php"> - sair</a>
+              <?php } ?>
+
             </div>
           </div>
         </nav>
@@ -92,14 +99,24 @@
                   <div class="card mb-3" style="max-width: 540px;">
                     <div class="row g-0">
                       <div class="col-md-4 d-flex justify-content-center">
-                        <img src="./assets/images/img-livro-01.jpg" class="img-fluid rounded-start" alt="...">
+                        <img src="https://biblioteca-fmu.s3.us-east-1.amazonaws.com/<?php echo $row->getCoverUrl() ?>"
+                        class="img-fluid rounded-start" alt="...">
                       </div>
                       <div class="col-md-8">
                         <div class="card-body">
                           <h5 class="card-title"><?php echo $row->getTitle() ?></h5>
                           <p class="card-text"><?php echo $row->getDescription() ?></p>
-                          <button type="button" class="btn btn-primary">Editar</button>
-                          <button type="button" class="btn btn-primary">Ver mais</button>
+
+                          <?php if(isset($_SESSION["newsession"])) { ?>
+                            <a href="edit-book.php?title=<?php echo $row->getTitle() ?>">
+                              <button type="button" class="btn btn-primary">Editar</button>
+                            </a>
+                          <?php } else { ?>
+                            <a href="edit-book.php?title=<?php echo $row->getTitle() ?>">
+                              <button type="button" class="btn btn-primary">Ver mais</button>
+                            </a>
+                          <?php } ?>
+
                         </div>
                       </div>
                     </div>
@@ -112,7 +129,7 @@
             
                 
 
-            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center">
+            <!--<div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center">
               <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
                   <div class="col-md-4 d-flex justify-content-center">
@@ -146,8 +163,7 @@
                   </div>
                 </div>
               </div>
-            </div>
-
+            </div>-->
             
         </div>
 
