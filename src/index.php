@@ -111,12 +111,10 @@
                             <a href="edit-book.php?title=<?php echo $row->getTitle() ?>">
                               <button type="button" class="btn btn-primary">Editar</button>
                             </a>
-                          <?php } else { ?>
-                            <a href="edit-book.php?title=<?php echo $row->getTitle() ?>">
+                          <?php } ?>
+                            <a href="see-more.php?title=<?php echo $row->getTitle() ?>">
                               <button type="button" class="btn btn-primary">Ver mais</button>
                             </a>
-                          <?php } ?>
-
                         </div>
                       </div>
                     </div>

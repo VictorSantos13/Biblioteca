@@ -7,6 +7,7 @@
             private $description;
             private $coverUrl;
             private Writer $writer;
+            private Gender $gender;
 
             public function fake_construct($title, $description, $coverUrl){
                 $this->title = $title;
@@ -18,6 +19,10 @@
 
             public function createId() {
                 $this->id = uniqid();
+            }
+
+            public function setId($id){
+                $this->id = $id;
             }
 
             public function getId(){
@@ -54,6 +59,14 @@
 
             public function setWriter(Writer $writer){
                 $this->writer = $writer;
+            }
+
+            public function getGender(){
+                return $this->gender;
+            }
+
+            public function setGender(Gender $gender){
+                $this->gender = $gender;
             }
         }
     }

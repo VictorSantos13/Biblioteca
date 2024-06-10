@@ -28,8 +28,12 @@
                 return $result;
             }
 
-            public function test(){
-                return 10;
+            public function editBook(Book $book, $writerId, $genderId){
+                return $this->repo->editBook($book, $writerId, $genderId);   
+            }
+
+            public function deleteBook($id){
+                return $this->repo->deleteBook($id);
             }
         }
     }

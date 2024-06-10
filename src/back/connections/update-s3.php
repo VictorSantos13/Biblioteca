@@ -22,12 +22,12 @@
   //   $_FILES["cover"]["tmp_name"]
   // );
 
-//  echo $_POST['id'];
-
-  $result = $s3Client->putObject([
-    'Bucket' => 'biblioteca-fmu',
-    'Key' => $_POST['id'] . ".jpg",
-    'SourceFile' => $_FILES["cover"]["tmp_name"],
-    'ContentType'=> "jpg",
-    'ContentDisposition'=>'attachment',
-  ]);
+  if($_FILES["cover"]["tmp_name"]){
+    $result = $s3Client->putObject([
+      'Bucket' => 'biblioteca-fmu',
+      'Key' => $_GET['id'] . ".jpg",
+      'SourceFile' => $_FILES["cover"]["tmp_name"],
+      'ContentType'=> "jpg",
+      'ContentDisposition'=>'attachment',
+    ]);
+  }

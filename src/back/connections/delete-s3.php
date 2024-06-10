@@ -24,10 +24,7 @@
 
 //  echo $_POST['id'];
 
-  $result = $s3Client->putObject([
+  $result = $s3Client->deleteObject([
     'Bucket' => 'biblioteca-fmu',
-    'Key' => $_POST['id'] . ".jpg",
-    'SourceFile' => $_FILES["cover"]["tmp_name"],
-    'ContentType'=> "jpg",
-    'ContentDisposition'=>'attachment',
+    'Key' => $_GET['id'] . ".jpg",
   ]);

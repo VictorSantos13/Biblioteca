@@ -50,66 +50,43 @@
 
         <div class="container">
             <div class="row justify-content-center">
-                <form class="w-50 p-4 bg-light mt-3" id="form" action="./back/routes/edit-book.php?id=<?php echo $resultBook->getId() ?>" method="post" enctype="multipart/form-data">
-                    <h1>Cadastre um novo livro</h1>
+                <form class="w-50 p-4 bg-light mt-3" id="form" action="./back/routes/edit-book.php" method="post" enctype="multipart/form-data">
+                    <h1>Detalhes do livro</h1>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Título</label>
-                        <input type="text" class="form-control" value='<?php echo $resultBook->getTitle() ?>' name="fTitle" id="fTitle" placeholder="1984" aria-describedby="emailHelp">
+                        <b><label for="exampleInputEmail1" class="form-label">Título</label></b>
+                        <p name="fTitle" id="fTitle" placeholder="1984" aria-describedby="emailHelp">
+                            <?php echo $resultBook->getTitle() ?>
+                        </p>
                     </div>   
 
                     <div class="form-floating mb-3">
-                        <textarea class="form-control" value="hm" name="fDescription" id="floatingTextarea2"  style="height: 200px; resize: none;"><?php echo $resultBook->getDescription() ?></textarea>
-                        <label for="floatingTextarea2">Escreva uma descrição do livro</label>
+                        <b><label for="exampleInputEmail1" class="form-label">Descrição</label></b>
+                        <p name="fTitle" id="fTitle" placeholder="1984" aria-describedby="emailHelp">
+                            <?php echo $resultBook->getDescription() ?>
+                        </p>
                     </div>
 
                     <div class="mb-3">
-                        <label for="disabledSelect" class="form-label">Gênero <a href="./create-gender.php">Criar um novo gênero</a></label>
-                        <select id="disabledSelect" name="fGender" class="form-select">
-
-                            <?php if($resultAllGenders != null){ ?>
-
-                                <option><?php echo $resultBook->getGender()->getName() ?></option>                                                                
-                                <?php foreach($resultAllGenders as $row){ ?>
-                                    <option><?php echo $row->getName()?></option>
-                                <?php } ?>
-
-                            <?php } else { ?>
-                                <option>Ainda não há gênero</option> 
-                            <?php }?>
-
-                        </select>
+                        <b><label for="exampleInputEmail1" class="form-label">Gênero</label></b>
+                        <p name="fTitle" id="fTitle" placeholder="1984" aria-describedby="emailHelp">
+                            <?php echo $resultBook->getGender()->getName() . " - " . $resultBook->getGender()->getDescription() ?>
+                        </p>
                     </div>
 
                     <div class="mb-3">
-                        <label for="disabledSelect" class="form-label">Escritor <a href="./create-writer.php">Criar um novo escritor</a></label>
-                        <select id="disabledSelect" name="fWriter" class="form-select">
-                            
-                            <?php if($resultAllWriters != null){ ?>
-
-                                <option><?php echo $resultBook->getWriter()->getName() ?></option>                                
-                                <?php foreach($resultAllWriters as $row){ ?>
-                                    <option><?php echo $row->getName()?></option>
-                                <?php } ?>
-
-                            <?php } else { ?>
-                                <option>Ainda não há escritores</option> 
-                            <?php }?>
-
-                        </select>
+                        <b><label for="exampleInputEmail1" class="form-label">Escritor</label></b>
+                        <p name="fTitle" id="fTitle" placeholder="1984" aria-describedby="emailHelp">
+                            <?php echo $resultBook->getWriter()->getName() . " - " . $resultBook->getWriter()->getDescription()?>
+                        </p>
                     </div>
 
                     <div class="mb-3 myPointer">
-                        <input type="file" accept="image" name="cover" id="inputGroupFile01">                    
+                        <b><label for="exampleInputEmail1" class="form-label">Capa do Livro</label></b>                
                         <label style="display: block;" for="inputGroupFile01">
                             <img style="display: block;" src="https://biblioteca-fmu.s3.amazonaws.com/<?php echo $resultBook->getCoverUrl() ?>" id="photo-preview-show">
                         </label>
                     </div>                    
 
-                    <button type="submit" id="submit" class="btn btn-primary">Salvar</button>
-
-                    <a href="./back/routes/delete-book.php?id=<?php echo $resultBook->getId() ?>">
-                        <button type="button" id="submit" class="btn btn-danger">Deletar</button>
-                    </a>
                 </form>                
             </div>            
         </div>
