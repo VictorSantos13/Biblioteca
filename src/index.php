@@ -40,7 +40,12 @@
                 </li>
               </ul>                
               
-              <a class="nav-link active text-white" aria-current="page" href="./login.html">Entrar</a>
+              <?php if(!isset($_SESSION["newsession"])) { ?>
+                <a class="nav-link active text-white" aria-current="page" href="./login.php">Entrar</a>
+              <?php } else { ?>
+                <a class="nav-link active text-white" aria-current="page"><?php echo $_SESSION["newsession"] ?></a>
+                <a class="nav-link active text-white" aria-current="page" href="./back/routes/logout.php"> - sair</a>
+              <?php } ?>
             </div>
           </div>
         </nav>

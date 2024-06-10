@@ -98,7 +98,18 @@
                             <?php }?>
 
                         </select>
-                    </div>
+                    </div><div class="mb-3 myPointer">
+                        <input type="file" accept="image" name="cover" id="inputGroupFile01">                    
+                        <label style="display: block;" for="inputGroupFile01">
+                            <img style="display: block;" src="https://biblioteca-fmu.s3.amazonaws.com/<?php echo $resultBook->getCoverUrl() ?>" id="photo-preview-show">
+                        </label>
+                    </div>                    
+
+                    <button type="submit" id="submit" class="btn btn-primary">Salvar</button>
+
+                    <a href="./back/routes/delete-book.php?id=<?php echo $resultBook->getId() ?>">
+                        <button type="button" id="submit" class="btn btn-danger">Deletar</button>
+                    </a>
 
         <!-- 
         <div class="container mt-5">
