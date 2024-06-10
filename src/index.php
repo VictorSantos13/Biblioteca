@@ -1,9 +1,51 @@
 <?php 
   require "./back/routes/get-all-books.php";
+  session_start();
   $title = "Biblioteca FMU" ;
-  require "template/header.php";  
-  
+  require "template/header.php"; 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" co  ntent="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Biblioteca</title>
+</head>
+<body>
+    <main class="main">
+      <!--HEADER-->
+        <nav class="navbar navbar-expand-lg fixed-top primary-color"><!--bg-body-tertiary-->
+          <div class="container-fluid">
+            <img src="assets/images/Logo.png" class="navbar-brand" href="./index.html"><!--<a class="navbar-brand" href="./index.html">Biblioteca FMU</a>-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active text-white" aria-current="page" href="./index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="./about-us.html">Sobre nós</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="sing-in.html">Cadastre-se</a>
+                </li>
+              </ul>                
+              
+              <a class="nav-link active text-white" aria-current="page" href="./login.html">Entrar</a>
+            </div>
+          </div>
+        </nav>
+        <div class="space"></div>
+        <!--END HEADER-->
 
         <!--CAROUSEL-->
         <div id="carouselExampleAutoplaying" class="carousel slide mb-2" style="height: 20rem;" data-bs-ride="carousel">
@@ -53,14 +95,22 @@
                   <div class="card mb-3" style="max-width: 540px;">
                     <div class="row g-0">
                       <div class="col-md-4 d-flex justify-content-center">
-                        <img src="./assets/images/img-livro-01.jpg" class="img-fluid rounded-start" alt="...">
+                        <img src="https://biblioteca-fmu.s3.us-east-1.amazonaws.com/<?php echo $row->getCoverUrl() ?>"
+                        class="img-fluid rounded-start" alt="...">
                       </div>
                       <div class="col-md-8">
                         <div class="card-body">
                           <h5 class="card-title"><?php echo $row->getTitle() ?></h5>
                           <p class="card-text"><?php echo $row->getDescription() ?></p>
-                          <button type="button" class="btn btn-primary">Editar</button>
-                          <button type="button" class="btn btn-primary">Ver mais</button>
+
+                          <?php if(isset($_SESSION["newsession"])) { ?>
+                            <a href="edit-book.php?title=<?php echo $row->getTitle() ?>">
+                              <button type="button" class="btn btn-primary">Editar</button>
+                            </a>
+                          <?php } ?>
+                            <a href="see-more.php?title=<?php echo $row->getTitle() ?>">
+                              <button type="button" class="btn btn-primary">Ver mais</button>
+                            </a>
                         </div>
                       </div>
                     </div>
@@ -73,7 +123,7 @@
             
                 
 
-            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center">
+            <!--<div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center">
               <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
                   <div class="col-md-4 d-flex justify-content-center">
@@ -107,8 +157,7 @@
                   </div>
                 </div>
               </div>
-            </div>
-
+            </div>-->
             
         </div>
 

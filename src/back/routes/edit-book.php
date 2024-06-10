@@ -14,6 +14,7 @@ use back\WriterRepoDatabase;
     require 'C:\xampp\htdocs\biblioteca\src\back\services\book-service.php';
     require 'C:\xampp\htdocs\biblioteca\src\back\services\writer-service.php';
     require 'C:\xampp\htdocs\biblioteca\src\back\services\gender-service.php';
+    require 'C:\xampp\htdocs\Biblioteca\src\back\connections\update-s3.php';
 
     $bookRepo = new BookRepoDatabase();
     $writerRepo = new WriterRepoDatabase();
@@ -27,13 +28,13 @@ use back\WriterRepoDatabase;
     $gender = $genderRepo->getGenderByName($_POST['fGender']);
 
     $book = new Book();
-    $book->createId();
-    $_POST['id'] = $book->getId();
-    $book->fake_construct($_POST['fTitle'], $_POST['fDescription'], $book->getId() . ".jpg");
+    $book->fake_construct($_POST['fTitle'], $_POST['fDescription'], $_GET['id'] . ".jpg");
+    $book->setId($_GET['id']);
+
+    echo $book->getTitle();
 
     $image = $_FILES["cover"];
 
-    $bookService->createNewBook($book, $writer->getId(), $gender->getId());
+    $bookService->editBook($book, $writer->getId(), $gender->getId());
 
-    require 'C:\xampp\htdocs\Biblioteca\src\back\connections\upload-s3.php';
     header('location: ../../index.php');

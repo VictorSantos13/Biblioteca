@@ -11,6 +11,11 @@
                 $this->id = uniqid();
             }
 
+            public function fake_construct($name, $description){
+                $this->name = $name;
+                $this->description = $description;
+            }
+
             public function setId($id){
                 $this->id = $id;
             }

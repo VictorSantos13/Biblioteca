@@ -10,11 +10,11 @@ require "template/header.php"
 
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Nome do gênero</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="1984" aria-describedby="emailHelp">
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="fName" placeholder="1984" aria-describedby="emailHelp">
                     </div>   
 
                     <div class="form-floating mb-3">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"  style="height: 200px; resize: none;"></textarea>
+                        <textarea class="form-control" placeholder="Leave a comment here" name="fDescription" id="floatingTextarea2"  style="height: 200px; resize: none;"></textarea>
                         <label for="floatingTextarea2">Escreva uma descrição para o gênero</label>
                     </div>                    
 

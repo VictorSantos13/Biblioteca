@@ -1,9 +1,7 @@
 <?php
     require './back/routes/get-all-writers.php';
     require './back/routes/get-all-genders.php';
-    require 'C:\xampp\htdocs\Biblioteca\src\back\routes\get-book-by-title.php';
-    $title = "Edit Book - Biblioteca FMU" ;
-    require "template/header.php";  
+    require 'C:\xampp\htdocs\Biblioteca\src\back\routes\get-book-by-title.php'
 ?>
 
 <!DOCTYPE html>
@@ -52,74 +50,46 @@
 
         <div class="container">
             <div class="row justify-content-center">
-                <form class="w-50 p-4 bg-light mt-3" id="form" action="./back/routes/edit-book.php?id=<?php echo $resultBook->getId() ?>" method="post" enctype="multipart/form-data">
-                    <h1>Cadastre um novo livro</h1>
+                <form class="w-50 p-4 bg-light mt-3" id="form" action="./back/routes/edit-book.php" method="post" enctype="multipart/form-data">
+                    <h1>Detalhes do livro</h1>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Título</label>
-                        <input type="text" class="form-control" value='<?php echo $resultBook->getTitle() ?>' name="fTitle" id="fTitle" placeholder="1984" aria-describedby="emailHelp">
+                        <b><label for="exampleInputEmail1" class="form-label">Título</label></b>
+                        <p name="fTitle" id="fTitle" placeholder="1984" aria-describedby="emailHelp">
+                            <?php echo $resultBook->getTitle() ?>
+                        </p>
                     </div>   
 
                     <div class="form-floating mb-3">
-                        <textarea class="form-control" value="hm" name="fDescription" id="floatingTextarea2"  style="height: 200px; resize: none;"><?php echo $resultBook->getDescription() ?></textarea>
-                        <label for="floatingTextarea2">Escreva uma descrição do livro</label>
+                        <b><label for="exampleInputEmail1" class="form-label">Descrição</label></b>
+                        <p name="fTitle" id="fTitle" placeholder="1984" aria-describedby="emailHelp">
+                            <?php echo $resultBook->getDescription() ?>
+                        </p>
                     </div>
 
                     <div class="mb-3">
-                        <label for="disabledSelect" class="form-label">Gênero <a href="./create-gender.php">Criar um novo gênero</a></label>
-                        <select id="disabledSelect" name="fGender" class="form-select">
-
-                            <?php if($resultAllGenders != null){ ?>
-
-                                <option><?php echo $resultBook->getGender()->getName() ?></option>                                                                
-                                <?php foreach($resultAllGenders as $row){ ?>
-                                    <option><?php echo $row->getName()?></option>
-                                <?php } ?>
-
-                            <?php } else { ?>
-                                <option>Ainda não há gênero</option> 
-                            <?php }?>
-
-                        </select>
+                        <b><label for="exampleInputEmail1" class="form-label">Gênero</label></b>
+                        <p name="fTitle" id="fTitle" placeholder="1984" aria-describedby="emailHelp">
+                            <?php echo $resultBook->getGender()->getName() . " - " . $resultBook->getGender()->getDescription() ?>
+                        </p>
                     </div>
 
                     <div class="mb-3">
-                        <label for="disabledSelect" class="form-label">Escritor <a href="./create-writer.php">Criar um novo escritor</a></label>
-                        <select id="disabledSelect" name="fWriter" class="form-select">
-                            
-                            <?php if($resultAllWriters != null){ ?>
-
-                                <option><?php echo $resultBook->getWriter()->getName() ?></option>                                
-                                <?php foreach($resultAllWriters as $row){ ?>
-                                    <option><?php echo $row->getName()?></option>
-                                <?php } ?>
-
-                            <?php } else { ?>
-                                <option>Ainda não há escritores</option> 
-                            <?php }?>
-
-                        </select>
+                        <b><label for="exampleInputEmail1" class="form-label">Escritor</label></b>
+                        <p name="fTitle" id="fTitle" placeholder="1984" aria-describedby="emailHelp">
+                            <?php echo $resultBook->getWriter()->getName() . " - " . $resultBook->getWriter()->getDescription()?>
+                        </p>
                     </div>
 
-        <!-- 
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-6">
-                    <p class="text-justify">
-                        O que dá direção e significado ao nosso trabalho?
-                        Disponibilizar um acervo de títulos completo, com equipe de colaboradores competente e treinada, orientada a fazer do momento da compra uma experiência única de descoberta e prazer.
-                    </p>
-                </div> 
+                    <div class="mb-3 myPointer">
+                        <b><label for="exampleInputEmail1" class="form-label">Capa do Livro</label></b>                
+                        <label style="display: block;" for="inputGroupFile01">
+                            <img style="display: block;" src="https://biblioteca-fmu.s3.amazonaws.com/<?php echo $resultBook->getCoverUrl() ?>" id="photo-preview-show">
+                        </label>
+                    </div>                    
 
-                <div class="col-6">
-                    <p class="text-justify">
-                        Acreditamos no poder transformador da informação e da cultura.
-                        Nosso objetivo é ser a melhor loja de entretenimento e informação, nos consolidando como a grande referência do setor.
-                        Quanto mais crescermos, mais vamos disseminar essa informação, ajudando as pessoas a construir e viver em um mundo melhor e mais justo.
-                    </p>
-                </div> 
-            </div>                         
+                </form>                
+            </div>            
         </div>
-        -->
     </main>
 
     <!--FOOTER-->

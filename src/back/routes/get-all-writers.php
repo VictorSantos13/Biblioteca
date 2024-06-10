@@ -2,7 +2,8 @@
 
 namespace back {
     use back\WriterRepoDatabase;
-    use WriterService;
+    use back\WriterService;
+    // use WriterService;
 
     require 'C:\xampp\htdocs\biblioteca\src\back\repositories\database\book-repo-database.php';
     require 'C:\xampp\htdocs\biblioteca\src\back\repositories\database\writer-repo-database.php';

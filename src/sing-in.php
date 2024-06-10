@@ -45,20 +45,20 @@
         <div class="container">
             <div class="row justify-content-center">
 
-                <form class="w-50 p-4 mt-5 mb-5 bg-light">   
+                <form class="w-50 p-4 mt-5 mb-5 bg-light" action="./back/routes/create-user.php" method="post">   
                     <h1>Cadastre-se</h1>
 
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Nome completo</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="João da Silva" aria-describedby="emailHelp">
+                        <input type="text" name="fName" class="form-control" id="exampleInputEmail1" placeholder="João da Silva" aria-describedby="emailHelp">
                     </div>          
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email</label>
-                        <input onblur="validaEmail()" type="email" class="form-control" id="exampleInputEmail1" placeholder="joaodasilva@gmail.com" aria-describedby="emailHelp">
+                        <input onblur="validaEmail()" type="email" name="fEmail" class="form-control" id="exampleInputEmail1" placeholder="joaodasilva@gmail.com" aria-describedby="emailHelp">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Senha</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                        <input type="password" name="fPassword" class="form-control" id="exampleInputPassword1">
                     </div>
                     <button type="submit" class="btn btn-primary">Entrar</button>
                 </form>
