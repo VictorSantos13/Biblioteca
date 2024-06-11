@@ -101,7 +101,7 @@
                     </div><div class="mb-3 myPointer">
                         <input type="file" accept="image" name="cover" id="inputGroupFile01">                    
                         <label style="display: block;" for="inputGroupFile01">
-                            <img style="display: block;" src="https://biblioteca-fmu.s3.amazonaws.com/<?php echo $resultBook->getCoverUrl() ?>" id="photo-preview-show">
+                            <img style="display: block; border-radius: 5px;" src="https://biblioteca-fmu.s3.amazonaws.com/<?php echo $resultBook->getCoverUrl() ?>" id="photo-preview-show">
                         </label>
                     </div>                    
 

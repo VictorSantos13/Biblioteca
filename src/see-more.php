@@ -83,7 +83,7 @@
                     <div class="mb-3 myPointer">
                         <b><label for="exampleInputEmail1" class="form-label">Capa do Livro</label></b>                
                         <label style="display: block;" for="inputGroupFile01">
-                            <img style="display: block;" src="https://biblioteca-fmu.s3.amazonaws.com/<?php echo $resultBook->getCoverUrl() ?>" id="photo-preview-show">
+                            <img style="display: block; border-radius: 5px;" src="https://biblioteca-fmu.s3.amazonaws.com/<?php echo $resultBook->getCoverUrl() ?>" id="photo-preview-show">
                         </label>
                     </div>                    
 

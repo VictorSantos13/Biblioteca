@@ -106,7 +106,7 @@
                         <input type="file" accept="image" name="cover" id="inputGroupFile01">                    
                         <label for="inputGroupFile01" id="photo-preview-input">+</label>
                         <label for="inputGroupFile01">
-                            <img src="#" id="photo-preview-show">
+                            <img style="border-radius: 5px;" src="#" id="photo-preview-show">
                         </label>
                     </div>                    
 

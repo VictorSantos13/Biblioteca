@@ -65,18 +65,6 @@ insert into genre values ("a0027c29-f2aa-4cfa-b5bd-35ca3c415dd0", "Ficcção", "
 insert into book_genres values (default, "a3657466-2576-4e28-b9bf-f1e68be578d0", "4a166e68-0ac9-4c14-a9ab-fdaa43631615");
 insert into book_genres values (default, "a0027c29-f2aa-4cfa-b5bd-35ca3c415dd0", "4a166e68-0ac9-4c14-a9ab-fdaa43631615");
 
-
-
-/*** * ***/
-
-/*select b.title título, b.description descrição, w.name escritor, g.name gênero
-from book b inner join writer w inner join book_genres bg inner join genre g
-where b.writer_id = w.id and bg.book_id = b.id and g.id = bg.genre_id;*/
-
-
+alter table book add cover_url varchar(70) after description;
 
 /*** * ***/
-
-
-
-/*** drop database library; ***/

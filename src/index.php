@@ -43,8 +43,11 @@
               <?php if(!isset($_SESSION["newsession"])) { ?>
                 <a class="nav-link active text-white" aria-current="page" href="./login.php">Entrar</a>
               <?php } else { ?>
-                <a class="nav-link active text-white" aria-current="page"><?php echo $_SESSION["newsession"] ?></a>
-                <a class="nav-link active text-white" aria-current="page" href="./back/routes/logout.php"> - sair</a>
+                <a class="nav-link active text-white" aria-current="page"><?php echo $_SESSION["newsession"] ?> </a>
+                <a class="nav-link active text-white" aria-current="page" href="./back/routes/logout.php">
+                  <img src="./assets/images/logout.png" style="width: 20px; margin-left: 10px;" alt="sair">
+                </a>
+                
               <?php } ?>
             </div>
           </div>
