@@ -24,14 +24,19 @@ use back\WriterRepoDatabase;
     $writerService = new WriterService($writerRepo);
     $genderService = new GenderService($genderRepo);
 
+    // if($bookService->verifyTitle($_POST['fTitle']) && $_POST['fTitle'] ){
+    //     header('location: ../../edit-book.php?title=' . $_POST['fTitle']);
+        
+    // }else{
+
+    // }
+
     $writer = $writerService->getWriterByName($_POST['fWriter']);
     $gender = $genderRepo->getGenderByName($_POST['fGender']);
 
     $book = new Book();
     $book->fake_construct($_POST['fTitle'], $_POST['fDescription'], $_GET['id'] . ".jpg");
     $book->setId($_GET['id']);
-
-    echo $book->getTitle();
 
     $image = $_FILES["cover"];
 

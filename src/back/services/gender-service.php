@@ -18,6 +18,10 @@
                 $result = $this->repo->getAllGenders();
                 return $result;
             }
+
+            public function verifyGender($name){
+                return $this->repo->verifyGender($name);
+            }
         }
     }
 ?>

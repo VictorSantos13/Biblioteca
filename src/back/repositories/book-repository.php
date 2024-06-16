@@ -13,6 +13,8 @@
             public function editBook(Book $book, $writerId, $genderId);
 
             public function deleteBook($title);
+
+            public function verifytitle($title);
         }
     }
 ?>

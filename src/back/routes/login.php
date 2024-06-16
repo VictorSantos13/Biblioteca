@@ -14,14 +14,12 @@ use back\UserService;
     // echo hash("sha256", $_POST["fPassword"]);
 
     if($name){
-        echo 'bem vindo troxa';
         session_start();
         $_SESSION["newsession"] = $name;
-
         header("location: ../../index.php");
     }
     else {
-        echo 'sem conta seu otário';
+        header("location: ../../login.php");
     }
 
     // session_start();

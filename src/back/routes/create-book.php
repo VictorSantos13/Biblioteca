@@ -23,17 +23,30 @@ use back\WriterRepoDatabase;
     $writerService = new WriterService($writerRepo);
     $genderService = new GenderService($genderRepo);
 
-    $writer = $writerService->getWriterByName($_POST['fWriter']);
-    $gender = $genderRepo->getGenderByName($_POST['fGender']);
+    if($bookService->verifyTitle($_POST['fTitle'])){
+        header('location: ../../create-book.php');        
+    }else{
 
-    $book = new Book();
-    $book->createId();
-    $_POST['id'] = $book->getId();
-    $book->fake_construct($_POST['fTitle'], $_POST['fDescription'], $book->getId() . ".jpg");
+        if ($_POST['fGender'] == 'Selecione um gênero' || $_POST['fWriter'] == 'Selecione um escritor'){
+            header('location: ../../create-book.php');
+        }
+        else {
+            $writer = $writerService->getWriterByName($_POST['fWriter']);
+            $gender = $genderRepo->getGenderByName($_POST['fGender']);
+    
+            $book = new Book();
+            $book->createId();
+            $_POST['id'] = $book->getId();
+            $book->fake_construct($_POST['fTitle'], $_POST['fDescription'], $book->getId() . ".jpg");
+    
+            $image = $_FILES["cover"];
+    
+            $bookService->createNewBook($book, $writer->getId(), $gender->getId());
+    
+            require 'C:\xampp\htdocs\Biblioteca\src\back\connections\upload-s3.php';
+            header('location: ../../index.php');
+        }
 
-    $image = $_FILES["cover"];
+    }
 
-    $bookService->createNewBook($book, $writer->getId(), $gender->getId());
-
-    require 'C:\xampp\htdocs\Biblioteca\src\back\connections\upload-s3.php';
-    header('location: ../../index.php');
+    

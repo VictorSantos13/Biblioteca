@@ -8,7 +8,9 @@
 
             public function getGenderByName(string $name): Gender | null;
 
-            public function getAllGenders(): array | null; // RETORNAR LISTA DE GÊNEROS (CRIAR DTO)
+            public function getAllGenders(): array | null;
+
+            public function verifyGender($name);
         }
     }
 ?>

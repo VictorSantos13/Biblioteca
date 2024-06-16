@@ -18,7 +18,7 @@
                         <input type="password" class="form-control" name="fPassword" id="exampleInputPassword1">
                     </div>
                     <button type="submit" class="btn btn-primary">Entrar</button>
-                    <div class="text mt-3">Ainda não tem uma conta? <a href="./sing-in.html">Clique aqui</a></div>                
+                    <div class="text mt-3">Ainda não tem uma conta? <a href="./sing-in.php">Clique aqui</a></div>                
                 </form>
             </div>
         </div>

@@ -12,16 +12,21 @@ use back\UserService;
     $userRepo = new UserRepoDatabase();
     $userService = new UserService($userRepo);
 
-    $user = new User();
-    $user->fake_construct($_POST['fName'], $_POST['fEmail'], $_POST['fPassword']);
-    $user->createId();
-
-    $user->hashPassword();
-    echo $user->getPassword();
-
-    $userService->createNewUser($user);
-
-    $_SESSION["newsession"] = $user->getName();
-
-    header('location: ../../index.php');
+    if($userService->verifyEmail($_POST['fEmail'])){
+        header('location: ../../sing-in.php');
+    }
+    else{
+        $user = new User();
+        $user->fake_construct($_POST['fName'], $_POST['fEmail'], $_POST['fPassword']);
+        $user->createId();
+    
+        $user->hashPassword();
+        echo $user->getPassword();
+    
+        $userService->createNewUser($user);
+    
+        $_SESSION["newsession"] = $user->getName();
+    
+        header('location: ../../index.php');
+    }    
 ?>

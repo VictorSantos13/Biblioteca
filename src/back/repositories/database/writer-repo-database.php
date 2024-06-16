@@ -86,5 +86,15 @@
                 else
                     return $writer;
             }
+
+            public function verifyWriter($name)
+            {
+                $this->query = "select name from writer where name = '" . $name . "';";
+                $result = mysqli_query($this->conn, $this->query);
+
+                $row = mysqli_fetch_row($result);
+
+                return $row;
+            }
         }
     }

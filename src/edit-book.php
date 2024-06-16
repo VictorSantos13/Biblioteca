@@ -53,7 +53,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <form class="w-50 p-4 bg-light mt-3" id="form" action="./back/routes/edit-book.php?id=<?php echo $resultBook->getId() ?>" method="post" enctype="multipart/form-data">
-                    <h1>Cadastre um novo livro</h1>
+                    <h1>Edite o livro</h1>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Título</label>
                         <input type="text" class="form-control" value='<?php echo $resultBook->getTitle() ?>' name="fTitle" id="fTitle" placeholder="1984" aria-describedby="emailHelp">

@@ -14,11 +14,17 @@ use back\WriterService;
     $writerRepo = new WriterRepoDatabase();
     $writerService = new WriterService($writerRepo);
 
-    $writer = new Writer();
-    $writer->fake_construct($_POST['fName'], $_POST['fDescription']);
-    $writer->createId();
+    if($writerService->verifyWriter($_POST['fName'])){
+        header('location: ../../create-writer.php');  
+        
+    }else{
 
-    $writerService->createNewWriter($writer);
+        $writer = new Writer();
+        $writer->fake_construct($_POST['fName'], $_POST['fDescription']);
+        $writer->createId();
 
-    header('location: ../../index.php');    
+        $writerService->createNewWriter($writer);
+
+        header('location: ../../index.php');    
+    }
 ?>

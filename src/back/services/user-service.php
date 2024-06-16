@@ -20,6 +20,10 @@
                 $result = $this->repo->login($email, $password);
                 return $result;
             }
+
+            public function verifyEmail($email){
+                return $this->repo->verifyEmail($email);
+            }
         }
     }
 ?>

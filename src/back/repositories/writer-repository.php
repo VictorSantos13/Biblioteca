@@ -10,5 +10,7 @@
             public function getWriterById($id): Writer | null;
 
             public function getWriterByName($name): Writer | null;
+
+            public function verifyWriter($name);
         }
     }

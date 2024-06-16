@@ -35,6 +35,10 @@
             public function deleteBook($id){
                 return $this->repo->deleteBook($id);
             }
+
+            public function verifyTitle($title){
+                return $this->repo->verifyTitle($title);
+            }
         }
     }
 ?>

@@ -26,5 +26,9 @@ namespace back {
         public function getWriterByName($name){
             return $this->writerRepo->getWriterByName($name);
         }
+
+        public function verifyWriter($name){
+            return $this->writerRepo->verifyWriter($name);
+        }
     }
 }

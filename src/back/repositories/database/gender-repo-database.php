@@ -67,6 +67,16 @@
                 else
                     return $array;                
             }
+
+            public function verifyGender($name)
+            {
+                $this->query = "select name from genre where name = '" . $name . "';";
+                $result = mysqli_query($this->conn, $this->query);
+
+                $row = mysqli_fetch_row($result);
+
+                return $row;
+            }
         }
     }
 ?>

@@ -102,6 +102,15 @@
                 $this->query = "delete from book where id = '" . $id . "';";
                 mysqli_query($this->conn, $this->query);
             }
+
+            public function verifyTitle($title){
+                $this->query = "select title from book where title = '" . $title . "';";
+                $result = mysqli_query($this->conn, $this->query);
+
+                $row = mysqli_fetch_row($result);
+
+                return $row;
+            }
         }
     }
 ?>

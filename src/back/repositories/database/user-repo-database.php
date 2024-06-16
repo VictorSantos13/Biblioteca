@@ -37,5 +37,14 @@
                     return $user->getName();  
 
             }
+
+            public function verifyEmail($email){
+                $this->query = "select e_mail from users where e_mail = '" . $email . "';";
+                $result = mysqli_query($this->conn, $this->query);
+
+                $row = mysqli_fetch_row($result);
+
+                return $row;
+            }
         }
     }

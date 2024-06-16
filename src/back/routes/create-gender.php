@@ -14,11 +14,17 @@ use back\GenderService;
     $genderRepo = new GenderRepoDatabase();
     $genderService = new GenderService($genderRepo);
 
-    $gender = new Gender();
-    $gender->fake_construct($_POST['fName'], $_POST['fDescription']);
-    $gender->createId();
+    if($genderService->verifyGender($_POST['fName'])){
+        header('location: ../../create-gender.php');  
+        
+    }else{
 
-    $genderService->createNewGender($gender);
+        $gender = new Gender();
+        $gender->fake_construct($_POST['fName'], $_POST['fDescription']);
+        $gender->createId();
 
-    header('location: ../../index.php');    
+        $genderService->createNewGender($gender);
+
+        header('location: ../../index.php');  
+    }
 ?>
